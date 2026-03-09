@@ -194,13 +194,23 @@ footer{padding:28px 5%;text-align:center;font-size:12px;color:var(--t3);border-t
 
 <section class="sec" id="pricing">
   <div class="sec-inner">
-    <div class="sec-title">See Everything. Decide with Confidence.</div>
     <div class="sec-sub">Public Preview includes Pro features free. Know what changed before anyone asks you.</div>
+
+    <!-- Billing toggle -->
+    <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:36px">
+      <span class="bill-label" id="blM" onclick="setBill(false)" style="opacity:.5">Monthly</span>
+      <div onclick="setBill(!isAnn)" style="width:44px;height:24px;border-radius:12px;background:var(--teal);cursor:pointer;position:relative;transition:.2s" id="blTrack">
+        <div id="blThumb" style="width:20px;height:20px;border-radius:50%;background:var(--dk);position:absolute;top:2px;left:22px;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>
+      </div>
+      <span class="bill-label" id="blA" style="font-weight:600">Annual</span>
+      <span style="font-family:var(--ff-m);font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(6,194,172,.1);color:var(--teal)">SAVE ~17%</span>
+    </div>
+
     <div class="plans">
       <div class="plan">
         <div class="plan-name">Starter</div>
         <div class="plan-meta">1–2 accounts · 1 user · 30 credits/mo</div>
-        <div class="plan-price">$49<span>/month</span></div>
+        <div class="plan-price"><span class="price-val" data-a="49" data-m="59">$49</span><span>/month</span></div>
         <ul class="plan-feats"><li>Cross-domain signal overview</li><li>EVA Explain</li><li>Change detection + velocity</li><li>Off-window flagging</li></ul>
         <a href="https://app.cloudeva.ai/auth/register" class="plan-cta outline">Start Free</a>
       </div>
@@ -208,7 +218,7 @@ footer{padding:28px 5%;text-align:center;font-size:12px;color:var(--t3);border-t
         <div class="plan-tag">✦ PUBLIC PREVIEW — FREE</div>
         <div class="plan-name">Pro</div>
         <div class="plan-meta">Up to 15 accounts · 10 users · 200 credits/mo</div>
-        <div class="plan-price">$289<span>/month</span></div>
+        <div class="plan-price"><span class="price-val" data-a="289" data-m="349">$289</span><span>/month</span></div>
         <ul class="plan-feats"><li>EVA Explain + Verify + Advise</li><li>Auto-proposed decisions</li><li>Outcome tracking + MBR/QBR</li><li>Confidence scoring</li><li>Deployment windows</li><li>Evidence trail</li><li>Custom roles (5 levels)</li></ul>
         <a href="https://app.cloudeva.ai/auth/register" class="plan-cta primary">See What Changed →</a>
         <div class="plan-free">Pro features free during Public Preview</div>
@@ -216,7 +226,7 @@ footer{padding:28px 5%;text-align:center;font-size:12px;color:var(--t3);border-t
       <div class="plan">
         <div class="plan-name">Growth</div>
         <div class="plan-meta">Up to 5 accounts · 3 users · 75 credits/mo</div>
-        <div class="plan-price">$122<span>/month</span></div>
+        <div class="plan-price"><span class="price-val" data-a="122" data-m="149">$122</span><span>/month</span></div>
         <ul class="plan-feats"><li>EVA Explain + Verify</li><li>Multi-account correlation</li><li>Advisory recommendations</li><li>Cloud Health Score</li></ul>
         <a href="https://app.cloudeva.ai/auth/register" class="plan-cta outline">Start Free</a>
       </div>
@@ -231,5 +241,20 @@ footer{padding:28px 5%;text-align:center;font-size:12px;color:var(--t3);border-t
 </section>
 
 <footer>© 2025 CloudEva by Rapyder Cloud Solutions · <a href="https://cloudeva.ai">cloudeva.ai</a> · Read-only. Agentic, not autonomous. Every change tracked.</footer>
+
+<script>
+let isAnn=true;
+function setBill(ann){
+  isAnn=ann;
+  document.querySelectorAll('.price-val').forEach(el=>{
+    el.textContent='$'+(ann?el.dataset.a:el.dataset.m);
+  });
+  document.getElementById('blM').style.opacity=ann?'.5':'1';
+  document.getElementById('blM').style.fontWeight=ann?'400':'600';
+  document.getElementById('blA').style.opacity=ann?'1':'.5';
+  document.getElementById('blA').style.fontWeight=ann?'600':'400';
+  document.getElementById('blThumb').style.left=ann?'22px':'2px';
+}
+</script>
 </body>
 </html>
