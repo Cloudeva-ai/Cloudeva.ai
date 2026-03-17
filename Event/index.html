@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CloudEva Event</title>
+  <meta name="description" content="Live CloudEva event registration page.">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal: #06c2ac;
+      --teal-2: #0aeacf;
+      --dk: #060b18;
+      --amber: #e08a50;
+      --w: #ffffff;
+      --t2: #94a3b8;
+      --t3: #64748b;
+      --bdr: #1a2a44;
+      --ff-d: "Sora", sans-serif;
+      --ff-b: "Outfit", sans-serif;
+      --ff-m: "JetBrains Mono", monospace;
+    }
+
+    body {
+      font-family: var(--ff-b);
+      background:
+        radial-gradient(circle at top right, rgba(6, 194, 172, 0.08), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(139, 107, 255, 0.08), transparent 28%),
+        var(--dk);
+      color: var(--w);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 5%;
+      background: rgba(6, 11, 24, 0.9);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(26, 42, 68, 0.45);
+    }
+
+    .tag {
+      font-family: var(--ff-m);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--teal);
+      background: rgba(6, 194, 172, 0.1);
+      border: 1px solid rgba(6, 194, 172, 0.18);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    .nav-r {
+      margin-left: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-family: var(--ff-d);
+      font-weight: 700;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-p {
+      padding: 11px 22px;
+      font-size: 13px;
+      color: #060b18;
+      background: linear-gradient(135deg, var(--teal-2), #069b8a);
+      box-shadow: 0 10px 34px rgba(6, 194, 172, 0.2);
+    }
+
+    .btn-p:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(6, 194, 172, 0.28);
+    }
+
+    .btn-g {
+      padding: 11px 22px;
+      font-size: 13px;
+      color: var(--t2);
+      border: 1px solid var(--bdr);
+      text-decoration: none;
+    }
+
+    .btn-g:hover {
+      color: var(--teal);
+      border-color: rgba(6, 194, 172, 0.35);
+    }
+
+    .hero {
+      min-height: calc(100vh - 92px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 5% 64px;
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ff-m);
+      font-size: 11px;
+      color: var(--teal);
+      background: rgba(6, 194, 172, 0.08);
+      border: 1px solid rgba(6, 194, 172, 0.2);
+      border-radius: 999px;
+      padding: 6px 16px;
+      margin-bottom: 22px;
+    }
+
+    .badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 12px rgba(6, 194, 172, 0.9);
+    }
+
+    h1 {
+      font-family: var(--ff-d);
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 18px;
+    }
+
+    .hl {
+      background: linear-gradient(135deg, var(--teal), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      max-width: 720px;
+      font-size: 17px;
+      line-height: 1.78;
+      color: var(--t2);
+      margin: 0 auto 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-ctas .btn-p {
+      padding: 14px 30px;
+      font-size: 15px;
+      box-shadow: 0 18px 46px rgba(6, 194, 172, 0.28);
+    }
+
+    .hero-ctas .btn-p:hover {
+      box-shadow: 0 22px 56px rgba(6, 194, 172, 0.34);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .trust-pill {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      color: var(--t2);
+      background: rgba(10, 17, 40, 0.9);
+      border: 1px solid var(--bdr);
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    footer {
+      padding: 28px 5%;
+      text-align: center;
+      font-size: 12px;
+      color: var(--t3);
+      border-top: 1px solid var(--bdr);
+    }
+
+    footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 12px 4%;
+      }
+
+      .hero,
+      footer {
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">
+      <img src="../Logo.png" alt="CloudEva" style="height:72px;width:auto;display:block;">
+    </div>
+    <span class="tag">Event Registration</span>
+    <div class="nav-r">
+      <a href="https://zcform.com/kPT7g" class="btn btn-p">Register Now</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="badge"><span class="dot"></span>Live CloudEva Event</div>
+      <h1>See How CloudEva Turns <span class="hl">Cloud Noise Into Decisions.</span></h1>
+      <p class="hero-sub">Join the CloudEva event to see how cost spikes, security findings, and overnight changes become one signal-aware decision flow. Registration still goes directly into Zoho, but the experience stays aligned with the CloudEva site.</p>
+
+      <div class="hero-ctas">
+        <a href="https://zcform.com/kPT7g" class="btn btn-p">Register Now</a>
+        <a href="https://zcform.com/kPT7g" class="btn btn-g">See What You Will Learn</a>
+      </div>
+
+      <div class="trust-row">
+        <span class="trust-pill">Read-only platform</span>
+        <span class="trust-pill">AWS, Azure, GCP context</span>
+        <span class="trust-pill">EVA Explain, Verify, Advise</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; 2025 CloudEva by Rapyder Cloud Solutions · <a href="https://cloudeva.ai">cloudeva.ai</a></footer>
+</body>
+</html>
