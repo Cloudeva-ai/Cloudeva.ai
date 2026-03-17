@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -111,12 +111,7 @@
       padding: 32px 5% 64px;
     }
 
-    .hero-inner {
-      max-width: 920px;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-    }
+    .hero-inner {`r`n      max-width: 920px;`r`n      margin: 0 auto;`r`n      width: 100%;`r`n      text-align: center;`r`n      display: flex;`r`n      flex-direction: column;`r`n      align-items: center;`r`n    }
 
     .badge {
       display: inline-flex;
@@ -140,13 +135,11 @@
       box-shadow: 0 0 12px rgba(6, 194, 172, 0.9);
     }
 
-    h1 {
-      font-family: var(--ff-d);
-      font-size: clamp(38px, 5vw, 66px);
-      line-height: 1.02;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      margin-bottom: 18px;
+    h1 {`r`n      font-family: var(--ff-d);`r`n      font-size: clamp(18px, 2.4vw, 30px);`r`n      line-height: 1.15;`r`n      font-weight: 800;`r`n      letter-spacing: -0.6px;`r`n      margin-bottom: 18px;`r`n    }
+
+    .h-line {
+      display: block;
+      white-space: nowrap;
     }
 
     .hl {
@@ -240,8 +233,8 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="badge"><span class="dot"></span>Live CloudEva Event</div>
-      <h1>See How CloudEva Turns <span class="hl">Cloud Noise Into Decisions.</span></h1>
-      <p class="hero-sub">Join the CloudEva event to see how cost spikes, security findings, and overnight changes become one signal-aware decision flow. Registration still goes directly into Zoho, but the experience stays aligned with the CloudEva site.</p>
+      <h1><span class="h-line">Play through real cloud challenges,</span><span class="h-line">pick the smartest move,</span><span class="h-line">and <span class="hl">test your decision-making skills.</span></span></h1>
+      <p class="hero-sub">Get it right, and you could walk away with a smartwatch</p>
 
       <div class="hero-ctas">
         <a href="https://zcform.com/kPT7g" class="btn btn-p">Register Now</a>
@@ -256,6 +249,15 @@
     </div>
   </section>
 
-  <footer>&copy; 2025 CloudEva by Rapyder Cloud Solutions · <a href="https://cloudeva.ai">cloudeva.ai</a></footer>
+  <footer>&copy; 2025 CloudEva by Rapyder Cloud Solutions &middot; cloudeva.ai &middot; Read-only. Agentic, not autonomous.</footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
